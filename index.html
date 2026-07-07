@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPU Scheduling Visualizer</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>CPU Scheduling Visualizer</h1>
+    <div class="sub">FCFS • SJF • Round Robin • Feedback Control (FCS)</div>
+
+    <div class="card">
+      <div class="top">
+        <label>
+          Algorithm
+          <select id="algo">
+            <option value="FCFS">FCFS</option>
+            <option value="SJF">SJF</option>
+            <option value="RR">Round Robin</option>
+            <option value="FCS">Feedback Control (FCS)</option>
+          </select>
+        </label>
+
+        <label id="quantumBox" class="hidden">
+          Base Quantum / Target
+          <input id="quantum" type="number" min="1" value="2" />
+        </label>
+
+        <button onclick="addRandom()">Add Random Task</button>
+        <button class="secondary" onclick="run()">Run</button>
+        <button class="secondary" onclick="resetAll()">Clear</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="mini-title">Tasks</h3>
+      <div id="taskList" class="tasks"></div>
+      <div id="noTask" class="empty">No tasks yet.</div>
+    </div>
+
+    <div class="card">
+      <h3 class="mini-title">Gantt Chart</h3>
+      <div id="ganttWrap" class="gantt-wrap">
+        <div id="gantt" class="gantt"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="mini-title">Stats Table</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Process</th>
+            <th>AT</th>
+            <th>BT</th>
+            <th>CT</th>
+            <th>TAT</th>
+            <th>WT</th>
+            <th>Notes / Dyn-Q</th>
+          </tr>
+        </thead>
+        <tbody id="stats"></tbody>
+      </table>
+
+      <div id="avg" class="avg"></div>
+    </div>
+  </div>
+</body>
+</html>
